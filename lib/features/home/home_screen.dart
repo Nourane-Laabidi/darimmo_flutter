@@ -132,11 +132,8 @@ Widget build (BuildContext context){
                   hintText:'Ville,quartier,adresse',
                   prefixIcon:Icon(Icons.search),
                 ),
-                onSubmitted:(_)=>setState((){
-                  _future=_service.fetchAll(
-                    transactionType:_mode,city:_search.text.trim()
-                  );
-                }),
+                onSubmitted: (_) => context.push(
+    '/results?mode=$_mode&q=${Uri.encodeComponent(_search.text.trim())}'),
               ),
             ),
             Padding(
